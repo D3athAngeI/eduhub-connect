@@ -10,11 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppTimetableRouteImport } from './routes/app.timetable'
+import { Route as AppTasksRouteImport } from './routes/app.tasks'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppMoreRouteImport } from './routes/app.more'
+import { Route as AppHomeworkRouteImport } from './routes/app.homework'
+import { Route as AppGradesRouteImport } from './routes/app.grades'
+import { Route as AppFilesRouteImport } from './routes/app.files'
+import { Route as AppEventsRouteImport } from './routes/app.events'
+import { Route as AppChatsRouteImport } from './routes/app.chats'
+import { Route as AppAnnouncementsRouteImport } from './routes/app.announcements'
+import { Route as AppAdminRouteImport } from './routes/app.admin'
+import { Route as AppAbsencesRouteImport } from './routes/app.absences'
+import { Route as AppChatsConversationIdRouteImport } from './routes/app.chats.$conversationId'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,30 +42,196 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTimetableRoute = AppTimetableRouteImport.update({
+  id: '/timetable',
+  path: '/timetable',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTasksRoute = AppTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMoreRoute = AppMoreRouteImport.update({
+  id: '/more',
+  path: '/more',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHomeworkRoute = AppHomeworkRouteImport.update({
+  id: '/homework',
+  path: '/homework',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGradesRoute = AppGradesRouteImport.update({
+  id: '/grades',
+  path: '/grades',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFilesRoute = AppFilesRouteImport.update({
+  id: '/files',
+  path: '/files',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEventsRoute = AppEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppChatsRoute = AppChatsRouteImport.update({
+  id: '/chats',
+  path: '/chats',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnnouncementsRoute = AppAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAbsencesRoute = AppAbsencesRouteImport.update({
+  id: '/absences',
+  path: '/absences',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppChatsConversationIdRoute = AppChatsConversationIdRouteImport.update({
+  id: '/$conversationId',
+  path: '/$conversationId',
+  getParentRoute: () => AppChatsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/absences': typeof AppAbsencesRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/announcements': typeof AppAnnouncementsRoute
+  '/app/chats': typeof AppChatsRouteWithChildren
+  '/app/events': typeof AppEventsRoute
+  '/app/files': typeof AppFilesRoute
+  '/app/grades': typeof AppGradesRoute
+  '/app/homework': typeof AppHomeworkRoute
+  '/app/more': typeof AppMoreRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/tasks': typeof AppTasksRoute
+  '/app/timetable': typeof AppTimetableRoute
+  '/app/': typeof AppIndexRoute
+  '/app/chats/$conversationId': typeof AppChatsConversationIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/app/absences': typeof AppAbsencesRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/announcements': typeof AppAnnouncementsRoute
+  '/app/chats': typeof AppChatsRouteWithChildren
+  '/app/events': typeof AppEventsRoute
+  '/app/files': typeof AppFilesRoute
+  '/app/grades': typeof AppGradesRoute
+  '/app/homework': typeof AppHomeworkRoute
+  '/app/more': typeof AppMoreRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/tasks': typeof AppTasksRoute
+  '/app/timetable': typeof AppTimetableRoute
+  '/app': typeof AppIndexRoute
+  '/app/chats/$conversationId': typeof AppChatsConversationIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/absences': typeof AppAbsencesRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/announcements': typeof AppAnnouncementsRoute
+  '/app/chats': typeof AppChatsRouteWithChildren
+  '/app/events': typeof AppEventsRoute
+  '/app/files': typeof AppFilesRoute
+  '/app/grades': typeof AppGradesRoute
+  '/app/homework': typeof AppHomeworkRoute
+  '/app/more': typeof AppMoreRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/tasks': typeof AppTasksRoute
+  '/app/timetable': typeof AppTimetableRoute
+  '/app/': typeof AppIndexRoute
+  '/app/chats/$conversationId': typeof AppChatsConversationIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/login'
+    | '/app/absences'
+    | '/app/admin'
+    | '/app/announcements'
+    | '/app/chats'
+    | '/app/events'
+    | '/app/files'
+    | '/app/grades'
+    | '/app/homework'
+    | '/app/more'
+    | '/app/profile'
+    | '/app/tasks'
+    | '/app/timetable'
+    | '/app/'
+    | '/app/chats/$conversationId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login'
-  id: '__root__' | '/' | '/login'
+  to:
+    | '/'
+    | '/login'
+    | '/app/absences'
+    | '/app/admin'
+    | '/app/announcements'
+    | '/app/chats'
+    | '/app/events'
+    | '/app/files'
+    | '/app/grades'
+    | '/app/homework'
+    | '/app/more'
+    | '/app/profile'
+    | '/app/tasks'
+    | '/app/timetable'
+    | '/app'
+    | '/app/chats/$conversationId'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/login'
+    | '/app/absences'
+    | '/app/admin'
+    | '/app/announcements'
+    | '/app/chats'
+    | '/app/events'
+    | '/app/files'
+    | '/app/grades'
+    | '/app/homework'
+    | '/app/more'
+    | '/app/profile'
+    | '/app/tasks'
+    | '/app/timetable'
+    | '/app/'
+    | '/app/chats/$conversationId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
   LoginRoute: typeof LoginRoute
 }
 
@@ -58,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -65,11 +258,156 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/timetable': {
+      id: '/app/timetable'
+      path: '/timetable'
+      fullPath: '/app/timetable'
+      preLoaderRoute: typeof AppTimetableRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/tasks': {
+      id: '/app/tasks'
+      path: '/tasks'
+      fullPath: '/app/tasks'
+      preLoaderRoute: typeof AppTasksRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/more': {
+      id: '/app/more'
+      path: '/more'
+      fullPath: '/app/more'
+      preLoaderRoute: typeof AppMoreRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/homework': {
+      id: '/app/homework'
+      path: '/homework'
+      fullPath: '/app/homework'
+      preLoaderRoute: typeof AppHomeworkRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/grades': {
+      id: '/app/grades'
+      path: '/grades'
+      fullPath: '/app/grades'
+      preLoaderRoute: typeof AppGradesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/files': {
+      id: '/app/files'
+      path: '/files'
+      fullPath: '/app/files'
+      preLoaderRoute: typeof AppFilesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/events': {
+      id: '/app/events'
+      path: '/events'
+      fullPath: '/app/events'
+      preLoaderRoute: typeof AppEventsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/chats': {
+      id: '/app/chats'
+      path: '/chats'
+      fullPath: '/app/chats'
+      preLoaderRoute: typeof AppChatsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/announcements': {
+      id: '/app/announcements'
+      path: '/announcements'
+      fullPath: '/app/announcements'
+      preLoaderRoute: typeof AppAnnouncementsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/admin': {
+      id: '/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/absences': {
+      id: '/app/absences'
+      path: '/absences'
+      fullPath: '/app/absences'
+      preLoaderRoute: typeof AppAbsencesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/chats/$conversationId': {
+      id: '/app/chats/$conversationId'
+      path: '/$conversationId'
+      fullPath: '/app/chats/$conversationId'
+      preLoaderRoute: typeof AppChatsConversationIdRouteImport
+      parentRoute: typeof AppChatsRoute
+    }
   }
 }
 
+interface AppChatsRouteChildren {
+  AppChatsConversationIdRoute: typeof AppChatsConversationIdRoute
+}
+
+const AppChatsRouteChildren: AppChatsRouteChildren = {
+  AppChatsConversationIdRoute: AppChatsConversationIdRoute,
+}
+
+const AppChatsRouteWithChildren = AppChatsRoute._addFileChildren(
+  AppChatsRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppAbsencesRoute: typeof AppAbsencesRoute
+  AppAdminRoute: typeof AppAdminRoute
+  AppAnnouncementsRoute: typeof AppAnnouncementsRoute
+  AppChatsRoute: typeof AppChatsRouteWithChildren
+  AppEventsRoute: typeof AppEventsRoute
+  AppFilesRoute: typeof AppFilesRoute
+  AppGradesRoute: typeof AppGradesRoute
+  AppHomeworkRoute: typeof AppHomeworkRoute
+  AppMoreRoute: typeof AppMoreRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppTasksRoute: typeof AppTasksRoute
+  AppTimetableRoute: typeof AppTimetableRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAbsencesRoute: AppAbsencesRoute,
+  AppAdminRoute: AppAdminRoute,
+  AppAnnouncementsRoute: AppAnnouncementsRoute,
+  AppChatsRoute: AppChatsRouteWithChildren,
+  AppEventsRoute: AppEventsRoute,
+  AppFilesRoute: AppFilesRoute,
+  AppGradesRoute: AppGradesRoute,
+  AppHomeworkRoute: AppHomeworkRoute,
+  AppMoreRoute: AppMoreRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppTasksRoute: AppTasksRoute,
+  AppTimetableRoute: AppTimetableRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
