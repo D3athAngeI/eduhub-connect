@@ -61,7 +61,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {sideLinks.map((l) => (
             <Link
               key={l.to}
-              to={l.to}
+              to={l.to as string}
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition",
                 isActive(l.to, l.exact)
@@ -138,7 +138,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             return (
               <Link
                 key={t.to}
-                to={t.to}
+                to={t.to as string}
                 className={cn(
                   "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-medium transition",
                   active ? "text-primary" : "text-muted-foreground"
