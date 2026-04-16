@@ -1,5 +1,7 @@
 import { Link, useLocation, useRouter } from "@tanstack/react-router";
-import { LayoutDashboard, MessageSquare, Calendar, CheckSquare, MoreHorizontal, GraduationCap, LogOut, Moon, Sun, Bell, BookOpen, FileText, FolderOpen, CalendarDays, Settings, ShieldCheck } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Calendar, CheckSquare, MoreHorizontal, GraduationCap, LogOut, Moon, Sun, Bell, BookOpen, FileText, FolderOpen, CalendarDays, ShieldCheck } from "lucide-react";
+
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 import { useAuth } from "@/lib/auth-context";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
@@ -7,15 +9,15 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-const tabs = [
+const tabs: NavItem[] = [
   { to: "/app", label: "Today", icon: LayoutDashboard, exact: true },
   { to: "/app/chats", label: "Chats", icon: MessageSquare },
   { to: "/app/timetable", label: "Schedule", icon: Calendar },
   { to: "/app/tasks", label: "Tasks", icon: CheckSquare },
   { to: "/app/more", label: "More", icon: MoreHorizontal },
-] as const;
+];
 
-const sideLinks = [
+const sideLinks: NavItem[] = [
   { to: "/app", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/app/timetable", label: "Timetable", icon: Calendar },
   { to: "/app/chats", label: "Chats", icon: MessageSquare },
@@ -26,7 +28,7 @@ const sideLinks = [
   { to: "/app/absences", label: "Absences", icon: FileText },
   { to: "/app/events", label: "Events", icon: CalendarDays },
   { to: "/app/files", label: "Files", icon: FolderOpen },
-] as const;
+];
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { profile, signOut } = useAuth();
